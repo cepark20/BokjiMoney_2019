@@ -17,29 +17,32 @@
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
             android:id="@+id/bar_menu"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/menu3">
         </ImageView>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1" />
+
         <ImageView
             android:id="@+id/bar_jujac"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/jujac"
-            app:layout_constraintRight_toRightOf="parent"></ImageView>
+            app:layout_constraintRight_toRightOf="parent" />
+
         <ImageView
             android:id="@+id/bar_logout"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
             android:src="@drawable/logout"
-            app:layout_constraintRight_toRightOf="parent"></ImageView>
+            app:layout_constraintRight_toRightOf="parent" />
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -92,8 +95,8 @@
                 android:layout_marginTop="30dp"
                 android:textColor="#4C4C4C"
                 android:textStyle="bold"
-                android:textSize="14dp"
-                android:text="박채은님 맞춤정보">
+                android:textSize="14sp"
+                android:text="나복지님 맞춤정보">
             </TextView>
         </LinearLayout>
         <ScrollView
@@ -103,13 +106,13 @@
             android:fillViewport="true">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:orientation="vertical">
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="성별">
@@ -118,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginLeft="30dp">
+                android:layout_marginStart="30dp">
                 <RadioGroup
                     android:id="@+id/radiogroup"
                     android:layout_width="match_parent"
@@ -132,21 +135,21 @@
                         android:layout_weight="1"
                         android:checked="true"
                         android:text="여자"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                     <RadioButton
                         android:id="@+id/rad_ma"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
                         android:layout_weight="1"
                         android:text="남자"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </RadioGroup>
             </LinearLayout>
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="나이">
@@ -161,13 +164,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-7dp"
                         android:gravity="center"
-                        android:layout_marginLeft="40dp"
+                        android:layout_marginStart="40dp"
                         android:focusedByDefault="false"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:text="32">
                     </EditText>
                     <TextView
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="-6dp"
@@ -176,8 +179,8 @@
                 </LinearLayout>
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="거주지">
@@ -186,51 +189,52 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="20dp">
+                    android:paddingStart="20dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="6dp"
                             android:text="시"
-                            android:textSize="13dp"></TextView>
+                            android:textSize="13sp" />
                         <Spinner
                             android:id="@+id/spinner_inform1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="5dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:textSize="5sp"
+                            tools:ignore="SmallSp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="horizontal">
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="6dp"
                             android:text="구"
-                            android:textSize="13dp"></TextView>
+                            android:textSize="13dp" />
                         <Spinner
                             android:id="@+id/spinner_inform2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:layout_centerHorizontal="true" />
+                            android:textSize="12sp" />
                     </LinearLayout>
                 </LinearLayout>
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="생애주기">
@@ -240,13 +244,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_centerHorizontal="true"/>
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="5dp" />
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="가구상황">
@@ -255,7 +258,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingLeft="10dp">
+                    android:paddingStart="10dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -265,15 +268,15 @@
                             android:id="@+id/cb_handi"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             android:text="장애인">
                         </CheckBox>
                         <CheckBox
                             android:id="@+id/cb_hanbumo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="12dp"
+                            android:layout_marginStart="10dp"
+                            android:textSize="12sp"
                             android:text="한부모">
                         </CheckBox>
                     </LinearLayout>
@@ -286,15 +289,15 @@
                             android:id="@+id/cb_damunhwa"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             android:text="다문화">
                         </CheckBox>
                         <CheckBox
                             android:id="@+id/cb_lowsodek"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:textSize="12dp"
+                            android:layout_marginStart="10dp"
+                            android:textSize="12sp"
                             android:text="저소득층">
                         </CheckBox>
                     </LinearLayout>
@@ -308,15 +311,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:checked="true"
-                            android:textSize="12dp"
+                            android:textSize="12sp"
                             android:text="해당없음">
                         </CheckBox>
                     </LinearLayout>
                 </LinearLayout>
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="장애여부">
@@ -325,7 +328,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="30dp">
+                    android:layout_marginStart="30dp">
                     <RadioGroup
                         android:id="@+id/radiogroup2"
                         android:layout_width="match_parent"
@@ -338,23 +341,23 @@
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:text="대상"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
                         <RadioButton
                             android:id="@+id/rad_dis_x"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginStart="15dp"
                             android:layout_weight="1"
                             android:checked="true"
                             android:text="비대상"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
                     </RadioGroup>
                 </LinearLayout>
 
                 <TextView
                     android:layout_marginTop="15dp"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="15dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="15sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="보훈">
@@ -363,7 +366,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginStart="30dp"
                     android:layout_marginBottom="20dp">
                     <RadioGroup
                         android:id="@+id/radiogroup3"
@@ -378,15 +381,15 @@
                             android:layout_weight="1"
                             android:text="대상"
                             android:checked="true"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
                         <RadioButton
                             android:id="@+id/rad_pat_x"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="15dp"
+                            android:layout_marginStart="15dp"
                             android:layout_weight="1"
                             android:text="비대상"
-                            android:textSize="12dp" />
+                            android:textSize="12sp" />
                     </RadioGroup>
                 </LinearLayout>
                 <Button
@@ -398,7 +401,7 @@
                     android:textColor="#FFFFFF"
                     android:background="@drawable/round_background4"
                     android:textStyle="bold"
-                    android:textSize="13dp"
+                    android:textSize="13sp"
                     android:text="정보수정" />
             </LinearLayout>
         </ScrollView>
