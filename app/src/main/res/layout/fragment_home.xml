@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/tolk_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:paddingBottom="50dp">
+
+            <ListView
+                android:id="@+id/tolk_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="#FFFFFF"
+                android:dividerHeight="0dp"></ListView>
+        </ScrollView>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:padding="3dp"
+            android:background="#FFFFFF"
+            android:gravity="bottom">
+            <EditText
+                android:id="@+id/inputText"
+                android:layout_width="100dp"
+                android:layout_weight="1"
+                android:layout_height="40dp"
+                android:focusedByDefault="false"/>
+            <Button
+                android:id="@+id/sendButton"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/round_background6"
+                android:text="send"
+                android:textSize="14dp"
+                android:textColor="#FFFFFF" />
+
+
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

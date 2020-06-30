@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".dummy_serviDetail">
+    <LinearLayout
+        android:id="@+id/bar_test"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/svDetail_menu"
+            android:layout_marginLeft="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/arrow3">
+        </ImageView>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/sv_Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="서비스명"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20dp"
+                android:text="지원대상및선정기준"/>
+            <TextView
+                android:id="@+id/servi_detail1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"
+                android:background="@drawable/r_corner_gray"
+                android:text="정보를 불러오는 중 입니다,,,"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="20dp"
+                android:text="지원내용(상세내용)"/>
+            <TextView
+                android:id="@+id/servi_detail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:padding="10dp"
+                android:background="@drawable/r_corner_gray"
+                android:text="정보를 불러오는 중 입니다,,,"/>
+
+
+
+
+
+            <TextView
+                android:id="@+id/sharedTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sharedtest"
+                ></TextView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textSize="20dp"
+            android:text="평점 : "></TextView>
+        <RatingBar
+            android:id="@+id/rating_score"
+            style="@style/Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="1">
+        </RatingBar>
+        <Button
+            android:id="@+id/u_score_btn2"
+            android:layout_margin="5dp"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:textSize="15dp"
+            android:text="등록"
+            android:background="@drawable/gradation3">
+        </Button>
+    </LinearLayout>
+        <Button
+            android:id="@+id/url_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textSize="17dp"
+            android:text="신청바로가기"
+            android:background="@drawable/gradation3">
+        </Button>
+
+</LinearLayout>
