@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -54,12 +55,7 @@ public class LoginActivity extends Activity {
         cb.setChecked(false);
 
         //체크박스 리스너
-        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                loginChecked= isChecked;
-            }
-        });
+        cb.setOnCheckedChangeListener((compoundButton, isChecked) -> loginChecked= isChecked);
 
         SharedPreferences pref = getSharedPreferences("pref", Context.MODE_PRIVATE);
         if(pref.getBoolean("autoLogin",false)){
@@ -71,8 +67,6 @@ public class LoginActivity extends Activity {
 
         //서버에서 회원정보 가져온 후 메인페이지로 이동
         btnLogin.setOnClickListener(view -> {
-            //getUserInfo
-            /*
             id = edtId.getText().toString().trim();
             String pwd = edtPw.getText().toString().trim();
             if(id.equals("") || (pwd.equals(""))){
@@ -83,8 +77,6 @@ public class LoginActivity extends Activity {
                 edtId.setText("");
                 edtPw.setText("");
             }
-
-            */
         });
 
         //회원 가입 페이지로 이동
@@ -101,6 +93,7 @@ public class LoginActivity extends Activity {
     }
 
     //회원정보 가져오기
+    @SuppressLint("StaticFieldLeak")
     public class getUserInfo extends AsyncTask<String,Void,String> {
         OkHttpClient client = new OkHttpClient();
 
@@ -139,7 +132,7 @@ public class LoginActivity extends Activity {
                             }
                             String uid = list.get(0);
                             uid = uid.substring(1);
-                            uid = uid.substring(0,uid.length()-1); // 큰따옴표 잘라내기
+                            uid = uid.substring(0,uid.length()-1);
                             Log.d("uid:",uid);
 
                             String pwd = list.get(1);
