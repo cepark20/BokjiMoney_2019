@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".jujac">
+
     <LinearLayout
         android:id="@+id/bar_test"
         android:layout_width="match_parent"
@@ -15,32 +15,25 @@
         android:gravity="center_vertical">
         <ImageView
             android:id="@+id/jujac_arrow"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/arrow3">
         </ImageView>
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
         android:text="저작권 관련 내용"
-        android:textSize="30dp"></TextView>
+        android:textSize="30sp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
-        android:textSize="18dp"
-        android:text="https://www.flaticon.com/free-icon/bi...\n
-‣ icon designed by Freepik From Flaticon\n
-‣ icon designed by Gregor Cresnar From Flaticon\n
-‣ icon designed by Zlatko Najdenovski From Flaticon\n
-‣ icon designed by monkik From Flaticon\n
-‣ icon designed by Smashicons From Flaticon\n
-‣ icon designed by turkkub From Flaticon\n
-‣ icon designed by Icongeek26 From Flaticon\n
-‣ icon designed by Eucalyp From Flaticon\n
-‣ icon designed by itim2101 From Flaticon"></TextView>
+        android:textSize="18sp"
+        android:text="@string/jujac_text" />
 
 </LinearLayout>
