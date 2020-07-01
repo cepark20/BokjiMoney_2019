@@ -75,7 +75,7 @@ public class HomeFragment extends Fragment implements AIListener{
     private AIRequest aiRequest;
     private AIDataService aiDataService;
     private EditText inputText;
-    private String TAG = "HOME_FRAGMENT";
+    private String TAG = "HOME_FRAGMENT", token = "YOUR_ACCESS_TOKEN";
     private String uid;
     private SharedPreferences pref, sp;
     private SharedPreferences.Editor editor;
@@ -108,7 +108,7 @@ public class HomeFragment extends Fragment implements AIListener{
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         //DialogFlow 연결
-        final AIConfiguration config = new AIConfiguration("985d11475d39439a969216a0f1626bc1",
+        final AIConfiguration config = new AIConfiguration(token,
                 AIConfiguration.SupportedLanguages.Korean,
                 AIConfiguration.RecognitionEngine.System);
         aiDataService = new AIDataService(getContext(),config);
@@ -116,13 +116,9 @@ public class HomeFragment extends Fragment implements AIListener{
         aiRequest = new AIRequest();
         aiService.setListener(this);
 
-        HomeViewModel homeViewModel = ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         inputText = root.findViewById(R.id.inputText);
         Button sendButton = root.findViewById(R.id.sendButton);
-        homeViewModel.getText().observe(this, s -> {
-            //textView.setText(s);
-        });
 
         // 리스트 뷰 톡이랑 연결
         listview = root.findViewById(R.id.tolk_list);
