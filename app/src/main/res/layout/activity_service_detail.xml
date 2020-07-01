@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".dummy_serviDetail">
+    tools:context=".ServiceDetail">
     <LinearLayout
         android:id="@+id/bar_test"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
             android:id="@+id/svDetail_menu"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/arrow3">
@@ -32,7 +32,7 @@
         android:fillViewport="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/sv_Name"
@@ -43,7 +43,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 android:text="서비스명"/>
             <TextView
                 android:layout_width="match_parent"
@@ -52,10 +52,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:textSize="20dp"
-                android:text="지원대상및선정기준"/>
+                android:textSize="20sp"
+                android:text="지원 대상 및 선정 기준"/>
             <TextView
-                android:id="@+id/servi_detail1"
+                android:id="@+id/serv_object"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -71,10 +71,10 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
-                android:textSize="20dp"
-                android:text="지원내용(상세내용)"/>
+                android:textSize="20sp"
+                android:text="지원 내용(상세내용)"/>
             <TextView
-                android:id="@+id/servi_detail2"
+                android:id="@+id/serv_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -82,49 +82,39 @@
                 android:padding="10dp"
                 android:background="@drawable/r_corner_gray"
                 android:text="정보를 불러오는 중 입니다,,,"/>
-
-
-
-
-
-            <TextView
-                android:id="@+id/sharedTest"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="sharedtest"
-                ></TextView>
-
         </LinearLayout>
     </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="right"
+        android:gravity="end"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:textSize="20dp"
-            android:text="평점 : "></TextView>
+            android:textSize="20sp"
+            android:text="평점 : " />
+
         <RatingBar
             android:id="@+id/rating_score"
             style="@style/Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_gravity="end"
             android:isIndicator="false"
             android:numStars="5"
             android:rating="0"
             android:stepSize="1">
         </RatingBar>
         <Button
-            android:id="@+id/u_score_btn2"
+            android:id="@+id/u_score_btn"
             android:layout_margin="5dp"
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:text="등록"
             android:background="@drawable/gradation3">
         </Button>
@@ -133,8 +123,8 @@
             android:id="@+id/url_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:textSize="17dp"
-            android:text="신청바로가기"
+            android:textSize="17sp"
+            android:text="신청 바로가기"
             android:background="@drawable/gradation3">
         </Button>
 
