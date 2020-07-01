@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="activity" type="com.example.myapplication.BlankFragment"></variable>
+        <variable
+            name="activity"
+            type="com.example.myapplication.BlankFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".BlankFragment">
-
-
 
         <Button
             android:id="@+id/bt_show"
@@ -22,7 +22,7 @@
             android:textColor="#FFFFFF"
             android:textStyle="bold"
             android:background="@drawable/round_background6"
-            android:textSize="17dp"
+            android:textSize="17sp"
             android:text="나의 혜택금액 확인하기"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:textSize="16dp"
+            android:textSize="16sp"
             android:text="회원님이 받을 혜택은 다음과 같습니다."
             app:layout_constraintEnd_toEndOf="parent"
             android:paddingBottom="16dp"
