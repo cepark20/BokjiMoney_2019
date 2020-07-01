@@ -280,7 +280,7 @@ public class HomeFragment extends Fragment implements AIListener{
                             SharedPreferences sp=getContext().getSharedPreferences("Skey", MODE_PRIVATE);
                             SharedPreferences.Editor editor=sp.edit();
                             editor.remove("text");
-                            editor.putString("text","hupup");
+                            editor.putString("text","collaborative_filtering");
                             editor.apply();
                         }
                         new Handler(getMainLooper()).post(() -> {
