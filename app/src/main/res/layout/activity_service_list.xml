@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dumy_serviList">
+    tools:context=".ServiceList">
     <LinearLayout
         android:id="@+id/bar_test"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
             android:id="@+id/svLinst_menu"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/arrow3">
@@ -25,14 +25,14 @@
     </LinearLayout>
     <TextView
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="관련 서비스 더보기"
         android:id="@+id/toolbar_title"
         android:textColor="#4C4C4C"
         android:textStyle="bold"
-        android:textSize="17dp"
+        android:textSize="17sp"
         />
     <View
         android:layout_marginTop="2dp"
@@ -40,7 +40,6 @@
         android:layout_marginRight="15dp"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_centerInParent="true"
         android:background="#6e6e6e"/>
     <ScrollView
         android:layout_marginTop="5dp"
