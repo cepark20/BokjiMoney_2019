@@ -45,8 +45,6 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 import java.io.IOException;
 import java.util.ArrayList;
-
-
 import static android.content.Context.MODE_PRIVATE;
 import static android.os.Looper.getMainLooper;
 
@@ -54,9 +52,8 @@ public class HomeFragment extends Fragment implements AIListener{
 
     private AIRequest aiRequest;
     private AIDataService aiDataService;
-    private EditText inputText;
-    private String TAG = "HOME_FRAGMENT", token = "YOUR_ACCESS_TOKEN";
-    private String uid;
+    private EditText chatText;
+    private String TAG = "HOME_FRAGMENT", token = "YOUR_ACCESS_TOKEN", uid;
     private SharedPreferences pref, sp;
     private SharedPreferences.Editor editor;
     private ListView listview;
@@ -97,11 +94,11 @@ public class HomeFragment extends Fragment implements AIListener{
         aiService.setListener(this);
 
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        inputText = root.findViewById(R.id.inputText);
+        chatText = root.findViewById(R.id.chatText);
         Button sendButton = root.findViewById(R.id.sendButton);
 
         // 리스트 뷰 톡이랑 연결
-        listview = root.findViewById(R.id.tolk_list);
+        listview = root.findViewById(R.id.talk_list);
         talkAdapter = new TalkAdapter();
         pref=getContext().getSharedPreferences("pref", MODE_PRIVATE);
         uid = pref.getString("uid","");
@@ -113,11 +110,11 @@ public class HomeFragment extends Fragment implements AIListener{
 
         // 대화 전송 버튼 클릭 시
         sendButton.setOnClickListener(v -> {
-            if(inputText.getText()!=null&& inputText.getText().length()!=0){
-                String message = inputText.getText().toString().trim();
+            if(chatText.getText()!=null&& chatText.getText().length()!=0){
+                String message = chatText.getText().toString().trim();
                 if(!message.equals("")){
                     talkAdapter.addItem(new TalkItem(false,message));
-                    inputText.setText("");
+                    chatText.setText("");
                     sendRequest(message);
                     listview.setAdapter(talkAdapter);
                     listview.setSelection(talkAdapter.getCount() - 1);

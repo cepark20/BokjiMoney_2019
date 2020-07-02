@@ -9,14 +9,14 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:id="@+id/tolk_scroll"
+            android:id="@+id/talk_scroll"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
             android:paddingBottom="50dp">
 
             <ListView
-                android:id="@+id/tolk_list"
+                android:id="@+id/talk_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:divider="#FFFFFF"
@@ -32,7 +32,7 @@
             android:background="#FFFFFF"
             android:gravity="bottom">
             <EditText
-                android:id="@+id/inputText"
+                android:id="@+id/chatText"
                 android:layout_width="100dp"
                 android:layout_weight="1"
                 android:layout_height="40dp"
