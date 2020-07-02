@@ -105,7 +105,7 @@ public class ServiceList extends AppCompatActivity {
 
     // FCM 전송을 위해 서버로 토큰, 서비스명 전달
     public class sendNoti extends AsyncTask<String,Void,String>{
-        String url = "http://192.168.123.145:8080/android";
+        String url = "http://52.79.72.52:5000/androidNoti";
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
