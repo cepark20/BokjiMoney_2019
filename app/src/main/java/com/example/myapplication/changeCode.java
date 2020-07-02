@@ -8,7 +8,7 @@ import java.net.URL;
 
 public class changeCode {
 
-    private String KEY="WU3mzjeOk9dyTh0TGhzyPJgVTF896mvmogKUt4Pxmnt87Xuixv2VhA3Sfa52ZGNVSh0rhtUjiwLspxg%2Fm4hYvQ%3D%3D";
+    private String KEY="YOUR_API_KEY";
 
     //가구유형 trgterIndvdlArray
     private String one="&trgterIndvdlArray=002",multi="&trgterIndvdlArray=003";
@@ -170,7 +170,7 @@ public class changeCode {
         } return outS;
     }
 
-    ServiceModel callDetailServ(String str) {
+    public ServiceModel callDetailServ(String str) {
 
         StrictMode.enableDefaults();
         ServiceModel sm;
@@ -269,8 +269,6 @@ public class changeCode {
                         break;
 
                     case XmlPullParser.END_TAG:
-                        if (parser.getName().equals("servList")) {
-                        }
                         break;
                 }
                 parserEvent = parser.next();
