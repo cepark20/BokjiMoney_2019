@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/tolk_view_layout"
+    android:id="@+id/talk_view_layout"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,7 +8,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="250dp"
-        android:textSize="14dp"
+        android:textSize="14sp"
         android:text="이러한 복지가 있네요!"
         android:background="@drawable/round_background1"
         android:textColor="#FFFFFF"
@@ -17,69 +17,59 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
-        android:id="@+id/tolk_view">
+        android:id="@+id/talk_view">
     </TextView>
-    <LinearLayout
-        android:id="@+id/button_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal">
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/list_layout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical">
-    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/dumy_visible"
+        android:id="@+id/service_list"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:visibility="visible"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/tolk_Lonear1"
+            android:id="@+id/talk_bokji1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="3dp"
             android:orientation="horizontal"
             android:background="@drawable/round_background1">
+
             <ImageView
-                android:id="@+id/tolk_image1"
+                android:id="@+id/talk_image1"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginEnd="2dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/heart"></ImageView>
+                android:layout_marginStart="12dp"
+                android:src="@drawable/heart" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_gravity="center_vertical"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tolk_sv1"
+                    android:id="@+id/talk_title1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="250dp"
                     android:textStyle="bold"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:text="service_title1"
                     android:textColor="#FFFFFF"
                     android:layout_margin="5dp">
                 </TextView>
                 <TextView
-                    android:id="@+id/tolk_svd1"
+                    android:id="@+id/talk_content1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="250dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="service_content1"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
@@ -89,46 +79,47 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/tolk_Lonear2"
+            android:id="@+id/talk_bokji2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="3dp"
             android:orientation="horizontal"
             android:background="@drawable/round_background1">
+
             <ImageView
-                android:id="@+id/tolk_image2"
+                android:id="@+id/talk_image2"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:layout_marginRight="2dp"
+                android:layout_marginEnd="2dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/heart"></ImageView>
+                android:layout_marginStart="12dp"
+                android:src="@drawable/heart" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tolk_sv2"
+                    android:id="@+id/talk_title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="250dp"
                     android:textStyle="bold"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:text="service_title2"
                     android:textColor="#FFFFFF"
                     android:layout_margin="5dp">
                 </TextView>
                 <TextView
-                    android:id="@+id/tolk_svd2"
+                    android:id="@+id/talk_content2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="250dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="service_content2"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
@@ -138,46 +129,47 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/tolk_Lonear3"
+            android:id="@+id/talk_bokji3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="3dp"
             android:orientation="horizontal"
             android:background="@drawable/round_background1">
+
             <ImageView
-                android:id="@+id/tolk_image3"
+                android:id="@+id/talk_image3"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginRight="2dp"
                 android:layout_marginTop="13dp"
                 android:layout_marginBottom="10dp"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/heart"></ImageView>
+                android:layout_marginStart="12dp"
+                android:src="@drawable/heart" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/tolk_sv3"
+                    android:id="@+id/talk_title3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="250dp"
                     android:textStyle="bold"
-                    android:textSize="14dp"
+                    android:textSize="14sp"
                     android:text="service_title3"
                     android:textColor="#FFFFFF"
                     android:layout_margin="5dp">
                 </TextView>
                 <TextView
-                    android:id="@+id/tolk_svd3"
+                    android:id="@+id/talk_content3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxWidth="250dp"
-                    android:textSize="12dp"
+                    android:textSize="12sp"
                     android:text="service_content3"
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="5dp"
@@ -200,7 +192,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/round_background4"
                 android:text="관련 서비스 더보기"
-                android:textSize="13dp"
+                android:textSize="13sp"
                 android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
