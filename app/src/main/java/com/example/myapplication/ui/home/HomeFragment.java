@@ -2,7 +2,6 @@ package com.example.myapplication.ui.home;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -17,38 +16,21 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
-import com.example.myapplication.MainActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.TolkItemView;
-import com.example.myapplication.Tolk_item;
+import com.example.myapplication.TalkItemView;
+import com.example.myapplication.TalkItem;
 import com.example.myapplication.changeCode;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-
 import ai.api.AIListener;
 import ai.api.AIServiceException;
 import ai.api.android.AIConfiguration;
 import ai.api.android.AIService;
-import ai.api.android.GsonFactory;
 import ai.api.android.AIDataService;
 import ai.api.model.AIError;
 import ai.api.model.AIRequest;
@@ -61,11 +43,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+
 
 import static android.content.Context.MODE_PRIVATE;
 import static android.os.Looper.getMainLooper;
@@ -80,7 +60,7 @@ public class HomeFragment extends Fragment implements AIListener{
     private SharedPreferences pref, sp;
     private SharedPreferences.Editor editor;
     private ListView listview;
-    private tolkAdapter tolkAdapter;
+    private TalkAdapter talkAdapter;
 
     @Override
     public void onResult(AIResponse response) {
@@ -122,7 +102,7 @@ public class HomeFragment extends Fragment implements AIListener{
 
         // 리스트 뷰 톡이랑 연결
         listview = root.findViewById(R.id.tolk_list);
-        tolkAdapter = new tolkAdapter();
+        talkAdapter = new TalkAdapter();
         pref=getContext().getSharedPreferences("pref", MODE_PRIVATE);
         uid = pref.getString("uid","");
 
@@ -136,11 +116,11 @@ public class HomeFragment extends Fragment implements AIListener{
             if(inputText.getText()!=null&& inputText.getText().length()!=0){
                 String message = inputText.getText().toString().trim();
                 if(!message.equals("")){
-                    tolkAdapter.addItem(new Tolk_item(false,message));
+                    talkAdapter.addItem(new TalkItem(false,message));
                     inputText.setText("");
                     sendRequest(message);
-                    listview.setAdapter(tolkAdapter);
-                    listview.setSelection(tolkAdapter.getCount() - 1);
+                    listview.setAdapter(talkAdapter);
+                    listview.setSelection(talkAdapter.getCount() - 1);
                 }
             }
         });
@@ -172,9 +152,9 @@ public class HomeFragment extends Fragment implements AIListener{
                     Log.d(TAG,"Intent : "+intent);
                     if(!response.equals("") && !response.equals(" ")){
                         if(response.substring(0,1).equals("!")){
-                            tolkAdapter.addItem(new Tolk_item(true,response));
-                            listview.setAdapter(tolkAdapter);
-                            listview.setSelection(tolkAdapter.getCount() - 1);
+                            talkAdapter.addItem(new TalkItem(true,response));
+                            listview.setAdapter(talkAdapter);
+                            listview.setSelection(talkAdapter.getCount() - 1);
                         }else{
                             if(response.equals("추천")){ // 사용자가 추천 복지 서비스 요청한 경우
                                 // 저장된 Category 정보 가져오기
@@ -182,8 +162,8 @@ public class HomeFragment extends Fragment implements AIListener{
                                 String category = sp.getString("first_skey","");
                                 sendRec(category);
                             }else {
-                                //api 호출
-                                sendApi task = new sendApi();
+                                // 복지 API 호출
+                                getApiService task = new getApiService();
                                 task.execute(response);
                             }
                         }
@@ -196,7 +176,7 @@ public class HomeFragment extends Fragment implements AIListener{
     }
 
     //내용 기반.협업 필터링 설정
-    private void sendRec(String response) {
+    private void sendRec(String category) {
         ArrayList<String> servlist;
         servlist = getStringArrayPref(getContext(), "u_servi");
         if (servlist.size() >= 4) { //협업 필터링 사용
@@ -208,18 +188,14 @@ public class HomeFragment extends Fragment implements AIListener{
             if(servlist.size() != 0){
                 String[] str = servlist.get(servlist.size()-1).split("&&&");
                 if(str[2]!=null&& !str[2].equals("")){
-                    sendCategory task2 = new sendCategory();
-                    task2.execute(str[2]);
-                    listview.setAdapter(tolkAdapter);
-                }else{
-                    sendCategory task2 = new sendCategory();
-                    task2.execute(response);
-                    listview.setAdapter(tolkAdapter);
+                    getContentBasedServices task = new getContentBasedServices();
+                    task.execute(str[2]);
+                    listview.setAdapter(talkAdapter);
                 }
             }else{ // 사용자의 채팅 내역이 없는 경우
-                sendCategory task2 = new sendCategory();
-                task2.execute(response);
-                listview.setAdapter(tolkAdapter);
+                getContentBasedServices task2 = new getContentBasedServices();
+                task2.execute(category);
+                listview.setAdapter(talkAdapter);
             }
         }
     }
@@ -276,7 +252,7 @@ public class HomeFragment extends Fragment implements AIListener{
                                     break;
                                 }
                             }
-                            tolkAdapter.addItem(new Tolk_item(true,"배열",three_svlist));
+                            talkAdapter.addItem(new TalkItem(true,"배열",three_svlist));
                             SharedPreferences sp=getContext().getSharedPreferences("Skey", MODE_PRIVATE);
                             SharedPreferences.Editor editor=sp.edit();
                             editor.remove("text");
@@ -284,8 +260,8 @@ public class HomeFragment extends Fragment implements AIListener{
                             editor.apply();
                         }
                         new Handler(getMainLooper()).post(() -> {
-                            listview.setAdapter(tolkAdapter);
-                            listview.setSelection(tolkAdapter.getCount() - 1);
+                            listview.setAdapter(talkAdapter);
+                            listview.setSelection(talkAdapter.getCount() - 1);
                         });
                     }else {
                         Log.d("협업 결과","리턴 값 null");
@@ -298,14 +274,14 @@ public class HomeFragment extends Fragment implements AIListener{
 
     // 복지로 API에서 응답받는 경우
     @SuppressLint("StaticFieldLeak")
-    public class sendApi extends AsyncTask<String,Void,String[][]>{
+    public class getApiService extends AsyncTask<String,Void,String[][]>{
         String category;
         @Override
         protected void onPostExecute(String[][] ss) {
             if(ss!=null){
-                tolkAdapter.addItem(new Tolk_item(true,"배열",ss));
-                listview.setAdapter(tolkAdapter);
-                listview.setSelection(tolkAdapter.getCount() - 1);
+                talkAdapter.addItem(new TalkItem(true,"배열",ss));
+                listview.setAdapter(talkAdapter);
+                listview.setSelection(talkAdapter.getCount() - 1);
                 SharedPreferences sp=getContext().getSharedPreferences("Skey", MODE_PRIVATE);
                 SharedPreferences.Editor editor=sp.edit();
 
@@ -313,9 +289,9 @@ public class HomeFragment extends Fragment implements AIListener{
                 editor.putString("text",category);
                 editor.apply();
             }else{
-                tolkAdapter.addItem(new Tolk_item(true,"api받아오는 오류"));
-                listview.setAdapter(tolkAdapter);
-                listview.setSelection(tolkAdapter.getCount() - 1);
+                talkAdapter.addItem(new TalkItem(true,"API 오류"));
+                listview.setAdapter(talkAdapter);
+                listview.setSelection(talkAdapter.getCount() - 1);
             }
         }
         @Override
@@ -328,18 +304,18 @@ public class HomeFragment extends Fragment implements AIListener{
 
     // 내용 기반 필터링
     @SuppressLint("StaticFieldLeak")
-    public class sendCategory extends AsyncTask<String,Void,String[][]> {
+    public class getContentBasedServices extends AsyncTask<String,Void,String[][]> {
         OkHttpClient client = new OkHttpClient();
         String[][] three_svlist;
 
         @Override
         protected void onPostExecute(String[][] s) {
             if(s!=null&&s.length!=0){
-                listview.setAdapter(tolkAdapter);
-                listview.setSelection(tolkAdapter.getCount() - 1);
+                listview.setAdapter(talkAdapter);
+                listview.setSelection(talkAdapter.getCount() - 1);
             }else{
-                listview.setAdapter(tolkAdapter);
-                listview.setSelection(tolkAdapter.getCount() - 1);
+                listview.setAdapter(talkAdapter);
+                listview.setSelection(talkAdapter.getCount() - 1);
             }
         }
 
@@ -384,7 +360,7 @@ public class HomeFragment extends Fragment implements AIListener{
                             String[] a = {result1,result2};
                             three_svlist[i] = a;
                         }
-                        tolkAdapter.addItem(new Tolk_item(true,"배열",three_svlist));
+                        talkAdapter.addItem(new TalkItem(true,"배열",three_svlist));
                         SharedPreferences sp=getContext().getSharedPreferences("Skey", MODE_PRIVATE);
                         SharedPreferences.Editor editor=sp.edit();
                         editor.remove("text");
@@ -419,8 +395,8 @@ public class HomeFragment extends Fragment implements AIListener{
     }
 
     //리스트 뷰 어댑터 클래스
-    class tolkAdapter extends BaseAdapter {
-        ArrayList<Tolk_item> items = new ArrayList<>();
+    class TalkAdapter extends BaseAdapter {
+        ArrayList<TalkItem> items = new ArrayList<>();
         @Override
         public int getCount() {
             return items.size();
@@ -433,23 +409,24 @@ public class HomeFragment extends Fragment implements AIListener{
         public long getItemId(int i) {
             return i;
         }
-        public void addItem(Tolk_item item){
+        public void addItem(TalkItem item){
             items.add(item);
         }
         @Override
         public View getView(int i, View v, ViewGroup viewGroup) {
-            TolkItemView view = new TolkItemView(getContext());
-            Tolk_item item = items.get(i);
-            if(!item.isBot()){
-                view.setBackGround2();
-                view.setTolk(item.getTolk());
+            TalkItemView view = new TalkItemView(getContext());
+            TalkItem item = items.get(i);
+
+            if(!item.isBot()){ // 내가 챗봇에 입력할 때
+                view.setBackGroundWhite();
+                view.setTalk(item.getTalk());
             }else{
-                if(!item.getTolk().equals("") && !item.getTolk().equals(" ") &&item.getTolk()!=null){
-                    if(item.getTolk().equals("배열")&&item.getItems()!=null&&item.getItems().length!=0){
-                        view.creatImg_list(item.getItems());
+                if(!item.getTalk().equals("") && !item.getTalk().equals(" ") &&item.getTalk()!=null){
+                    if(item.getTalk().equals("배열")&&item.getItems()!=null&&item.getItems().length!=0){
+                        view.setBokjiList(item.getItems());
                     }else{
-                        view.setTolk(item.getTolk());
-                        view.button_visible(false);
+                        view.setTalk(item.getTalk());
+                        view.setListVisible(false);
                     }
                 }
             }
