@@ -1,11 +1,13 @@
 package com.example.myapplication;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -22,6 +24,8 @@ import com.google.gson.JsonParser;
 import org.json.JSONArray;
 import org.json.JSONException;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -36,7 +40,7 @@ import okhttp3.ResponseBody;
 public class ServiceList extends AppCompatActivity {
 
     private ListView listview;
-    private ArrayList<String> noti_list;
+    private ArrayList<String> noti_list, date_list;
     private serviceAdapter serviAdapter;
     private String token, uid;
 
@@ -57,6 +61,7 @@ public class ServiceList extends AppCompatActivity {
         token = pref.getString("token","");
 
         noti_list=getStringArrayPref(this,"notiList");
+        date_list = new ArrayList<>();
 
         SharedPreferences sp=getApplication().getSharedPreferences("Skey",MODE_PRIVATE);
         String key=sp.getString("text","");
@@ -299,6 +304,14 @@ public class ServiceList extends AppCompatActivity {
     //리스트 뷰 어댑터 클래스
     class serviceAdapter extends BaseAdapter {
         ArrayList<MoreItemList> items = new ArrayList<>();
+        //List<Pair<String, String>> noti_pair = new ArrayList<>();
+
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        public String getCurrentDate(){ // 등록날짜 가져오기
+            LocalDate currentDate = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            return formatter.format(currentDate);
+        }
 
         @Override
         public int getCount() {
@@ -319,12 +332,13 @@ public class ServiceList extends AppCompatActivity {
             items.add(item);
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         @Override
         public View getView(int i, View v, ViewGroup viewGroup) {
             MoreItemView view = new MoreItemView(getApplicationContext());
             MoreItemList item = items.get(i);
-            final String fiText = item.getMore_title();
-            final ImageView fiImgeView = view.more_noti;
+            final String serviceTitle = item.getMore_title();
+            final ImageView notiIcon = view.more_noti;
 
             view.setMore_title(item.getMore_title());
             view.setMore_content(item.getMore_content());
@@ -347,25 +361,34 @@ public class ServiceList extends AppCompatActivity {
                     (dialog, which) -> {
                         if(noti_list.size()==0){
                             sendNoti task = new sendNoti();
-                            task.execute(token,fiText);
+                            task.execute(token,serviceTitle);
+
+                            // 현재 날짜 가져오기
+                            String regDay = getCurrentDate();
+                            //noti_pair.add(new Pair<>(serviceTitle, regDay));
 
                             Toast.makeText(getApplicationContext(),"알림이 등록되었습니다.",Toast.LENGTH_SHORT).show();
-                            noti_list.add(fiText);
+                            noti_list.add(serviceTitle);
+                            date_list.add(regDay);
                             setStringArrayPref(getApplicationContext(),"notiList",noti_list);
-                            fiImgeView.setImageResource(R.drawable.icon_noti3);
+                            setStringArrayPref(getApplicationContext(),"dateList", date_list);
+                            notiIcon.setImageResource(R.drawable.icon_noti3);
                         }else{
                             for(int j = 0; j <noti_list.size(); j++){
-                                if(noti_list.get(j).equals(fiText)){// 이미 알람에 등록되어있는 경우
+                                if(noti_list.get(j).equals(serviceTitle)){// 이미 알람에 등록되어있는 경우
                                     Toast.makeText(getApplicationContext(),"이미 등록된 알람입니다.",Toast.LENGTH_SHORT).show();
                                     break;
                                 }
                                 else if(j == noti_list.size()-1){// 알람에 등록된 서비스가 아닌 경우
                                     sendNoti task = new sendNoti();
-                                    task.execute(token,fiText);
+                                    task.execute(token,serviceTitle);
                                     Toast.makeText(getApplicationContext(),"알림이 등록되었습니다.",Toast.LENGTH_SHORT).show();
-                                    noti_list.add(fiText);
+                                    noti_list.add(serviceTitle);
+                                    String regDay = getCurrentDate();
+                                    date_list.add(regDay);
                                     setStringArrayPref(getApplicationContext(),"notiList",noti_list);
-                                    fiImgeView.setImageResource(R.drawable.icon_noti3);
+                                    setStringArrayPref(getApplicationContext(),"dateList", date_list);
+                                    notiIcon.setImageResource(R.drawable.icon_noti3);
                                 }
                             }
                         }
