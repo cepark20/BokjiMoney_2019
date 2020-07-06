@@ -1,28 +1,22 @@
 package com.example.myapplication.ui.notifications;
 
-import android.graphics.drawable.Drawable;
-
 public class NotiItem {
 
-    private Drawable image;
+    private int imageId;
     private String title;
     private String duration;
     private String dday;
 
-    public NotiItem(Drawable image, String title, String duration, String dday){
-        this.image = image;
+    public NotiItem(int imageId, String title, String duration, String dday){
+        this.imageId = imageId;
         this.title = title;
         this.duration = duration;
         this.dday = dday;
     }
 
-    public Drawable getImage(){
-        return image;
-    }
+    public int getImageId() { return imageId; }
 
-    public void setImage(Drawable image){
-        this.image = image;
-    }
+    public void setImageId(int imageId) { this.imageId = imageId; }
 
     public String getTitle(){
         return title;

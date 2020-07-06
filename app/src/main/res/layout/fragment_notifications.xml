@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
         <TextView
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="나의 서비스 알리미"
-            android:id="@+id/toolbar_title"
             android:textColor="#4C4C4C"
             android:textStyle="bold"
-            android:textSize="17dp"
-            />
+            android:textSize="17sp" />
 
     <View
         android:layout_marginTop="2dp"
@@ -23,25 +20,11 @@
         android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:layout_centerInParent="true"
         android:background="#6e6e6e"/>
 
-    <ScrollView
-        android:layout_marginTop="15dp"
-        android:id="@+id/scroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notiRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:paddingBottom="60dp">
-        <ListView
-            android:id="@+id/list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:dividerHeight="10dp"
-            android:divider="#00000000"
-            >
-        </ListView>
-    </ScrollView>
+        android:layout_marginTop="15dp"/>
 </LinearLayout>
